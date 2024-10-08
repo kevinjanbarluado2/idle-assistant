@@ -64,10 +64,22 @@ def restart_script(icon, item):
     # Restart the script
     os.execv(sys.executable, ['python'] + sys.argv)
 
+def random_left_click():
+    """Randomly perform left mouse clicks at random positions."""
+    screen_width, screen_height = pyautogui.size()
+    while running:
+        x = random.randint(0, screen_width - 1)
+        y = random.randint(0, screen_height - 1)
+        pyautogui.click(x, y)  # Perform a left click
+        time.sleep(random.uniform(2, 5))  # Wait for a random interval before the next click
+
 def setup_tray_icon():
     """Create a system tray icon."""
-    # Load the icon image from file
-    icon_image = Image.open("./icon.png")  
+    # Get the directory of the current script
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Load the icon image from file using the dynamic path
+    icon_image = Image.open(os.path.join(base_dir, "icon.ico"))  
 
     # Create a menu for the tray icon with Exit and Restart options
     menu = Menu(
@@ -87,6 +99,7 @@ def start_background_tasks():
     alt_tab_thread = threading.Thread(target=random_alt_tab)
     ctrl_tab_thread = threading.Thread(target=random_ctrl_tab)
     keystrokes_thread = threading.Thread(target=random_keystrokes)
+    click_thread = threading.Thread(target=random_left_click)
     exit_thread = threading.Thread(target=monitor_exit)
 
     # Start all threads
@@ -94,6 +107,7 @@ def start_background_tasks():
     alt_tab_thread.start()
     ctrl_tab_thread.start()  # Start Ctrl+Tab thread
     keystrokes_thread.start()
+    click_thread.start() 
     exit_thread.start()
 
     # Wait for all threads to finish
@@ -101,6 +115,7 @@ def start_background_tasks():
     alt_tab_thread.join()
     ctrl_tab_thread.join()  # Wait for Ctrl+Tab thread
     keystrokes_thread.join()
+    click_thread.join()
     exit_thread.join()
 
 # Main function to run the tray icon and background tasks
