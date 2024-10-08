@@ -5,6 +5,8 @@ import time
 import threading
 from pystray import Icon, MenuItem, Menu
 from PIL import Image, ImageDraw
+import os
+import sys
 
 # Flag to control the script running state
 running = True
@@ -53,18 +55,28 @@ def stop_script(icon, item):
     running = False
     icon.stop()
 
+def restart_script(icon, item):
+    """Restart the script."""
+    global running
+    running = False
+    icon.stop()
+    
+    # Restart the script
+    os.execv(sys.executable, ['python'] + sys.argv)
+
 def setup_tray_icon():
     """Create a system tray icon."""
-    # Create a blank image for the icon
-    icon_image = Image.new('RGB', (64, 64), color=(0, 128, 128))
-    d = ImageDraw.Draw(icon_image)
-    d.text((10, 20), "M", fill=(255, 255, 255))
+    # Load the icon image from file
+    icon_image = Image.open("./icon.png")  
 
-    # Create a menu for the tray icon
-    menu = Menu(MenuItem('Exit', stop_script))
+    # Create a menu for the tray icon with Exit and Restart options
+    menu = Menu(
+        MenuItem('Restart', restart_script),  # Add Restart option
+        MenuItem('Exit', stop_script)         # Add Exit option
+    )
 
     # Create the tray icon
-    icon = Icon("Mouse Mover", icon_image, "Mouse Mover", menu)
+    icon = Icon("Idle Assistant", icon_image, "Idle Assistant", menu)
 
     return icon
 
