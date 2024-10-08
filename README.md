@@ -1,4 +1,4 @@
-# IdleAssistant
+# <img src='https://raw.githubusercontent.com/kevinjanbarluado2/idle-assistant/main/icon.ico' width="40" height="40" /> Idle Assistant
 
 **IdleAssistant** is a lightweight application designed to automate simple user interactions on your computer, including random mouse movements, keystrokes, and automatic window switching. It's particularly useful for preventing inactivity timeouts during long periods of non-use.
 
