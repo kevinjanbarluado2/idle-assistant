@@ -1,6 +1,6 @@
 # <img src='https://raw.githubusercontent.com/kevinjanbarluado2/idle-assistant/main/icon.ico' width="40" height="40" /> Idle Assistant
 
-**IdleAssistant** is a lightweight application designed to automate simple user interactions on your computer, including random mouse movements, keystrokes, and automatic window switching. It's particularly useful for preventing inactivity timeouts during long periods of non-use.
+**Idle Assistant** is a lightweight application designed to automate simple user interactions on your computer, including random mouse movements, keystrokes, and automatic window switching. It's particularly useful for preventing inactivity timeouts during long periods of non-use.
 
 ## Features
 
@@ -16,12 +16,15 @@
 - Python 3.x installed on your machine.
 - `pip` (Python package installer) for managing Python packages.
 
+### Download Executables
+For convenience, pre-built executables for both Windows and macOS are available in the Releases section of the repository. You can download the appropriate executable for your operating system and skip the installation steps.
+
 ### Steps to Install
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/IdleAssistant.git
-   cd IdleAssistant
+   git clone https://github.com/kevinjanbarluado2/idle-assistant.git
+   cd idle-assistant
    
 3. **Install Required Packages**:
    ```bash
@@ -44,7 +47,7 @@ Once the application is running, it will start performing random mouse movements
 Contributions are welcome! If you'd like to contribute to IdleAssistant, please fork the repository and create a pull request.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/kevinjanbarluado2/idle-assistant/blob/main/LICENSE) file for more details.
 
 ## Acknowledgements
 - [pyautogui](https://pyautogui.readthedocs.io/en/latest/) - For automating mouse and keyboard actions.
